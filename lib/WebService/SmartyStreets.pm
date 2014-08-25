@@ -5,6 +5,7 @@ with 'WebService::BaseClientRole';
 # VERSION
 
 use aliased 'WebService::SmartyStreets::Exception::AddressNotFound';
+use aliased 'WebService::SmartyStreets::Exception::AddressMissingInformation';
 
 use Function::Parameters ':strict';
 use URI;
@@ -39,7 +40,9 @@ method verify_address(
         zipcode    => $zipcode,
     }]);
 
-    AddressNotFound->throw unless $result;
+    AddressNotFound->throw unless $result and @$result;
+    AddressMissingInformation->throw if @$result == 1
+        and $result->[0]{analysis}{dpv_match_code} eq 'D';
     return $result;
 }
 

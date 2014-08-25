@@ -20,4 +20,20 @@ subtest 'Testing verify_address parameter errors' => sub {
     }
 };
 
+subtest 'Testing verify_address address errors' => sub {
+    isa_ok exception { ss->verify_address(
+        street  => '370 Townsend St',
+        city    => 'Boulder',
+        state   => 'CO',
+        zipcode => '80305',
+    )}, 'WebService::SmartyStreets::Exception::AddressNotFound';
+
+    isa_ok exception { ss->verify_address(
+        street  => '1529 Queen Anne Ave N',
+        city    => 'Seattle',
+        state   => 'WA',
+        zipcode => '98109',
+    )}, 'WebService::SmartyStreets::Exception::AddressMissingInformation';
+};
+
 done_testing;

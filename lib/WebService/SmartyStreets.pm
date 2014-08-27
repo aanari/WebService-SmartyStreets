@@ -46,4 +46,67 @@ method verify_address(
     return $result;
 }
 
+=head1 SYNOPSIS
+
+    use WebService::SmartyStreets;
+
+    my $ss = WebService::SmartyStreets->new(
+        auth_id     => 'abc123',
+        auth_token  => 'zyx456',
+    );
+
+    $ss->verify_address(...);
+
+=head1 DESCRIPTION
+
+This module provides bindings for the
+L<SmartyStreets|http://smartystreets.com/products/liveaddress-api> API.
+
+=for markdown [![Build Status](https://travis-ci.org/aanari/WebService-SmartyStreets.svg?branch=master)](https://travis-ci.org/aanari/WebService-SmartyStreets)
+
+=head1 METHODS
+
+=head2 new
+
+Instantiates a new WebService::SmartyStreets client object.
+
+    my $ss = WebService::SmartyStreets->new(
+        auth_id    => $auth_id,
+        auth_token => $auth_token,
+        timeout    => $retries,    # optional
+        retries    => $retries,    # optional
+    );
+
+B<Parameters>
+
+=over 4
+
+=item - C<auth_id>
+
+I<Required>E<10> E<8>
+
+A valid SmartyStreets auth id for your account.
+
+=item - C<auth_token>
+
+I<Required>E<10> E<8>
+
+A valid SmartyStreets auth token for your account.
+
+=item - C<timeout>
+
+I<Optional>E<10> E<8>
+
+The number of seconds to wait per request until timing out.  Defaults to C<10>.
+
+=item - C<retries>
+
+I<Optional>E<10> E<8>
+
+The number of times to retry requests in cases when SmartyStreets returns a 5xx response.  Defaults to C<0>.
+
+=back
+
+=cut
+
 1;

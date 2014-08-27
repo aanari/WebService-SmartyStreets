@@ -63,6 +63,38 @@ __Parameters__
 
     The number of times to retry requests in cases when SmartyStreets returns a 5xx response.  Defaults to `0`.
 
+## verify\_address
+
+Validates an address given.
+
+__Request:__
+
+    verify_address(
+        street  => '370 Townsend St',
+        city    => 'San Francisco',
+        state   => 'CA',
+        zipcode => '94107',
+    );
+
+__Response:__
+
+    [{
+        street   => '370 Townsend St',
+        city     => 'San Francisco',
+        state    => 'CA',
+        zipcode  => '94107-1607',
+    }]
+
+__Exceptions:__
+
+- \- `WebService::SmartyStreets::Exception::AddressNotFound`
+
+    Address Not Found.
+
+- \- `WebService::SmartyStreets::Exception::AddressMissingInformation`
+
+    The address you entered was found but more information is needed to match to a specific address.
+
 # BUGS
 
 Please report any bugs or feature requests on the bugtracker website

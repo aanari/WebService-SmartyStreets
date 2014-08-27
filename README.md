@@ -4,7 +4,7 @@ WebService::SmartyStreets
 
 # VERSION
 
-version 0.0100
+version 0.0102
 
 # SYNOPSIS
 

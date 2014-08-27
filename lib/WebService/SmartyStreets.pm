@@ -30,20 +30,31 @@ method verify_address(
     Str :$street2 = '',
     Str :$city,
     Str :$state,
-    Str :$zipcode = ''
+    Str :$zipcode = '',
+    Int :$candidates = 2
 ) {
-    my $result = $self->post($self->base_url, [{
+    my $results = $self->post($self->base_url, [{
         street     => $street,
         street2    => $street2,
         city       => $city,
         state      => $state,
         zipcode    => $zipcode,
+        candidates => $candidates,
     }]);
 
-    AddressNotFound->throw unless $result and @$result;
-    AddressMissingInformation->throw if @$result == 1
-        and $result->[0]{analysis}{dpv_match_code} eq 'D';
-    return $result;
+    AddressNotFound->throw unless $results and @$results;
+    AddressMissingInformation->throw if @$results == 1
+        and $results->[0]{analysis}{dpv_match_code} eq 'D';
+
+    return [
+        map {{
+            street  => $_->{delivery_line_1},
+            (street2 => $_->{delivery_line_2}) x!! $_->{delivery_line_2},
+            city    => $_->{components}{city_name},
+            state   => $_->{components}{state_abbreviation},
+            zipcode => $_->{components}{zipcode} . '-' . $_->{components}{plus4_code},
+        }} @$results
+    ];
 }
 
 =head1 SYNOPSIS

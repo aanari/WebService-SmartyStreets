@@ -22,6 +22,8 @@ version 0.0102
 This module provides bindings for the
 [SmartyStreets](http://smartystreets.com/products/liveaddress-api) API.
 
+[![Build Status](https://travis-ci.org/aanari/WebService-SmartyStreets.svg?branch=master)](https://travis-ci.org/aanari/WebService-SmartyStreets)
+
 # METHODS
 
 ## new

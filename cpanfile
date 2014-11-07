@@ -2,7 +2,7 @@ requires "Function::Parameters" => "0";
 requires "Moo" => "1.006000";
 requires "Throwable::Error" => "0";
 requires "URI" => "0";
-requires "WebService::BaseClientRole" => "0.0004";
+requires "WebService::Client" => "0.0001";
 requires "aliased" => "0";
 
 on 'test' => sub {
@@ -20,7 +20,7 @@ on 'test' => sub {
 };
 
 on 'configure' => sub {
-  requires "ExtUtils::MakeMaker" => "6.30";
+  requires "ExtUtils::MakeMaker" => "0";
 };
 
 on 'develop' => sub {

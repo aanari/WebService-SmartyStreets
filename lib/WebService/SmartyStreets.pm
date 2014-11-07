@@ -1,6 +1,6 @@
 package WebService::SmartyStreets;
 use Moo;
-with 'WebService::BaseClientRole';
+with 'WebService::Client';
 
 # VERSION
 

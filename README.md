@@ -4,7 +4,7 @@ WebService::SmartyStreets
 
 # VERSION
 
-version 0.0103
+version 0.0105
 
 # SYNOPSIS
 
@@ -37,29 +37,33 @@ Instantiates a new WebService::SmartyStreets client object.
         retries    => $retries,    # optional
     );
 
-__Parameters__
+**Parameters**
 
-- \- `auth_id`
+- - `auth_id`
 
-    _Required_&#10; &#8;
+    _Required_
+     
 
     A valid SmartyStreets auth id for your account.
 
-- \- `auth_token`
+- - `auth_token`
 
-    _Required_&#10; &#8;
+    _Required_
+     
 
     A valid SmartyStreets auth token for your account.
 
-- \- `timeout`
+- - `timeout`
 
-    _Optional_&#10; &#8;
+    _Optional_
+     
 
     The number of seconds to wait per request until timing out.  Defaults to `10`.
 
-- \- `retries`
+- - `retries`
 
-    _Optional_&#10; &#8;
+    _Optional_
+     
 
     The number of times to retry requests in cases when SmartyStreets returns a 5xx response.  Defaults to `0`.
 
@@ -67,7 +71,7 @@ __Parameters__
 
 Validates an address given.
 
-__Request:__
+**Request:**
 
     verify_address(
         street  => '370 Townsend St',
@@ -76,7 +80,7 @@ __Request:__
         zipcode => '94107',
     );
 
-__Response:__
+**Response:**
 
     [{
         street   => '370 Townsend St',
@@ -85,13 +89,13 @@ __Response:__
         zipcode  => '94107-1607',
     }]
 
-__Exceptions:__
+**Exceptions:**
 
-- \- `WebService::SmartyStreets::Exception::AddressNotFound`
+- - `WebService::SmartyStreets::Exception::AddressNotFound`
 
     Address Not Found.
 
-- \- `WebService::SmartyStreets::Exception::AddressMissingInformation`
+- - `WebService::SmartyStreets::Exception::AddressMissingInformation`
 
     The address you entered was found but more information is needed to match to a specific address.
 
@@ -107,6 +111,10 @@ feature.
 # AUTHOR
 
 Ali Anari <ali@anari.me>
+
+# CONTRIBUTOR
+
+Naveed Massjouni <naveedm9@gmail.com>
 
 # COPYRIGHT AND LICENSE
 

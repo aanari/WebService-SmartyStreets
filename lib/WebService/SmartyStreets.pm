@@ -7,7 +7,7 @@ with 'WebService::Client';
 use aliased 'WebService::SmartyStreets::Exception::AddressNotFound';
 use aliased 'WebService::SmartyStreets::Exception::AddressMissingInformation';
 
-use Function::Parameters ':strict';
+use Method::Signatures;
 use URI;
 
 has auth_id    => ( is => 'ro', required => 1 );
@@ -26,10 +26,10 @@ has '+base_url' => (
 );
 
 method verify_address(
-    Str :$street,
+    Str :$street!,
     Str :$street2 = '',
-    Str :$city,
-    Str :$state,
+    Str :$city!,
+    Str :$state!,
     Str :$zipcode = '',
     Int :$candidates = 2
 ) {

@@ -6,16 +6,16 @@ use Storable qw(dclone);
 
 subtest 'Testing verify_address parameter errors' => sub {
     my %address_params = (
-        street => '370 Townsend St',
-        city   => 'San Francisco',
-        state  => 'CA',
+        street  => '370 Townsend St',
+        city    => 'San Francisco',
+        state   => 'CA',
     );
 
     for my $key (keys %address_params) {
         my %params = %{ dclone(\%address_params) };
         delete $params{$key};
         like exception { ss->verify_address(%params) },
-            qr/Not enough arguments for method/,
+            qr/missing required argument \$$key/,
             "failed correctly on missing parameter: $key";
     }
 };

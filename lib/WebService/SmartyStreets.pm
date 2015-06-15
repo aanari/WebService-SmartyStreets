@@ -39,7 +39,7 @@ method verify_address(
         city       => $city,
         state      => $state,
         zipcode    => $zipcode,
-        candidates => $candidates,
+        candidates => int($candidates),
     }]);
 
     AddressNotFound->throw unless $results and @$results;
